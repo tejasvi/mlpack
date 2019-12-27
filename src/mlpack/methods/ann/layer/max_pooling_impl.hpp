@@ -55,7 +55,7 @@ MaxPooling<InputDataType, OutputDataType>::MaxPooling(
     offset(0),
     batchSize(0)
 {
-  CreatePadding(std::move(paddingType));
+  padding.CreatePadding(std::move(paddingType));
 }
 
 template<typename InputDataType, typename OutputDataType>
@@ -137,7 +137,8 @@ void MaxPooling<InputDataType, OutputDataType>::Forward(
     reset = true;
   }
 
-  bool isPadded {padWLeft != 0 || padWRight != 0 || padHTop != 0 || padHBottom != 0};
+  bool isPadded {padWLeft != 0 || padWRight != 0 ||
+      padHTop != 0 || padHBottom != 0};
 
   if (isPadded)
   {
@@ -150,9 +151,9 @@ void MaxPooling<InputDataType, OutputDataType>::Forward(
           std::move(inputPaddedTemp.slice(i)));
     }
   }
-  
+
   auto& inputRes = isPadded ? inputPaddedTemp : inputTemp;
-  
+
   for (size_t s = 0; s < inputRes.n_slices; s++)
   {
     if (!deterministic)
@@ -216,7 +217,8 @@ void MaxPooling<InputDataType, OutputDataType>::serialize(
 }
 
 template<typename InputDataType, typename OutputDataType>
-void MaxPooling<InputDataType, OutputDataType>::CreatePadding(const std::string&& paddingType)
+void MaxPooling<InputDataType, OutputDataType>::CreatePadding(
+    const std::string&& paddingType)
 {
   // Transform paddingType to lowercase.
   std::string paddingTypeLow = paddingType;

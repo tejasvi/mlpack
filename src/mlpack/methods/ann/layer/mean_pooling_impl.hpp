@@ -40,10 +40,10 @@ MeanPooling<InputDataType, OutputDataType>::MeanPooling(
     strideWidth(strideWidth),
     strideHeight(strideHeight),
     floor(floor),
-    padWLeft(std::get<0>(padW)),
-    padWRight(std::get<1>(padW)),
-    padHBottom(std::get<1>(padH)),
-    padHTop(std::get<0>(padH)),
+    padWLeft(padW),
+    padWRight(padW),
+    padHBottom(padH),
+    padHTop(padH),
     inSize(0),
     outSize(0),
     inputWidth(0),
@@ -143,7 +143,7 @@ void MeanPooling<InputDataType, OutputDataType>::Forward(
     Pooling(inputPaddedTemp.slice(s), outputTemp.slice(s));
   }
   else
-  { 
+  {
     for (size_t s = 0; s < inputTemp.n_slices; s++)
     Pooling(inputTemp.slice(s), outputTemp.slice(s));
   }
@@ -196,7 +196,7 @@ void MeanPooling<InputDataType, OutputDataType>::serialize(
 }
 
 template<typename InputDataType, typename OutputDataType>
-void MaxPooling<InputDataType, OutputDataType>::CreatePadding(const std::string&& paddingType)
+void MeanPooling<InputDataType, OutputDataType>::CreatePadding(const std::string&& paddingType)
 {
   // Transform paddingType to lowercase.
   std::string paddingTypeLow = paddingType;
@@ -219,7 +219,7 @@ void MaxPooling<InputDataType, OutputDataType>::CreatePadding(const std::string&
 }
 
 template<typename InputDataType, typename OutputDataType>
-void MaxPooling<InputDataType, OutputDataType>::InitializeSamePadding()
+void MeanPooling<InputDataType, OutputDataType>::InitializeSamePadding()
 {
   /*
    * Using O = (W - F + 2P) / s + 1;

@@ -245,7 +245,7 @@ class MeanPooling
    * Function to create input padding as specified.
    */
   void CreatePadding(const std::string&& paddingType);
-  
+
   /*
    * Function to assign padding such that output size is same as input size.
    */
@@ -313,7 +313,7 @@ class MeanPooling
 
   //! Locally-stored transformed input parameter.
   arma::cube inputTemp;
-  
+
   //! Locally-stored transformed padded input parameter.
   arma::cube inputPaddedTemp;
 

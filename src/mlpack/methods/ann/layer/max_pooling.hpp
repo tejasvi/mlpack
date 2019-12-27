@@ -231,7 +231,8 @@ class MaxPooling
           {
             arma::Mat<size_t> subIndices = indices(arma::span(rowidx - padHTop,
               rowidx - padHTop + kernelWidth - 1 - offset),
-              arma::span(colidx - padWLeft, colidx - padWLeft + kernelHeight - 1 - offset));
+              arma::span(colidx - padWLeft,
+                  colidx - padWLeft + kernelHeight - 1 - offset));
 
             poolingIndices(i, j) = subIndices(idx);
           }
@@ -262,7 +263,7 @@ class MaxPooling
    * Function to create input padding as specified.
    */
   void CreatePadding(const std::string&& paddingType);
-  
+
   /*
    * Function to assign padding such that output size is same as input size.
    */
@@ -330,7 +331,7 @@ class MaxPooling
 
   //! Locally-stored transformed input parameter.
   arma::cube inputTemp;
-  
+
   //! Locally-stored transformed padded input parameter.
   arma::cube inputPaddedTemp;
 
