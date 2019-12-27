@@ -225,9 +225,9 @@ class MaxPooling
         const size_t idx = pooling.Pooling(subInput);
         output(i, j) = subInput(idx);
 
-        if (!deterministic &&)
+        if (!deterministic)
         {
-          if (rowidx >= padHtop && colidx >= padWLeft)
+          if (rowidx >= padHTop && colidx >= padWLeft)
           {
             arma::Mat<size_t> subIndices = indices(arma::span(rowidx - padHTop,
               rowidx - padHTop + kernelWidth - 1 - offset),
@@ -361,7 +361,6 @@ class MaxPooling
 
   //! Locally-stored padding layer.
   ann::Padding<> padding;
-
 }; // class MaxPooling
 
 } // namespace ann

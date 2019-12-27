@@ -55,7 +55,7 @@ MaxPooling<InputDataType, OutputDataType>::MaxPooling(
     offset(0),
     batchSize(0)
 {
-  padding.CreatePadding(std::move(paddingType));
+  CreatePadding(std::move(paddingType));
 }
 
 template<typename InputDataType, typename OutputDataType>

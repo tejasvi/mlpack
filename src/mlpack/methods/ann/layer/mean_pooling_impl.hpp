@@ -123,7 +123,8 @@ void MeanPooling<InputDataType, OutputDataType>::Forward(
   outputTemp = arma::zeros<arma::Cube<eT> >(outputWidth, outputHeight,
       batchSize * inSize);
 
-  bool isPadded {padWLeft != 0 || padWRight != 0 || padHTop != 0 || padHBottom != 0};
+  bool isPadded {padWLeft != 0 || padWRight != 0 ||
+      padHTop != 0 || padHBottom != 0};
 
   if (isPadded)
   {
@@ -196,7 +197,8 @@ void MeanPooling<InputDataType, OutputDataType>::serialize(
 }
 
 template<typename InputDataType, typename OutputDataType>
-void MeanPooling<InputDataType, OutputDataType>::CreatePadding(const std::string&& paddingType)
+void MeanPooling<InputDataType, OutputDataType>::CreatePadding(
+    const std::string&& paddingType)
 {
   // Transform paddingType to lowercase.
   std::string paddingTypeLow = paddingType;
