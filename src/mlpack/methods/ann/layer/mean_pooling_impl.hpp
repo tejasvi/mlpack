@@ -29,11 +29,11 @@ template<typename InputDataType, typename OutputDataType>
 MeanPooling<InputDataType, OutputDataType>::MeanPooling(
     const size_t kernelWidth,
     const size_t kernelHeight,
-    const size_t padW,
-    const size_t padH,
     const size_t strideWidth,
     const size_t strideHeight,
     const bool floor,
+    const size_t padW,
+    const size_t padH,
     const std::string paddingType) :
     kernelWidth(kernelWidth),
     kernelHeight(kernelHeight),
@@ -62,11 +62,11 @@ template<typename InputDataType, typename OutputDataType>
 MeanPooling<InputDataType, OutputDataType>::MeanPooling(
     const size_t kernelWidth,
     const size_t kernelHeight,
-    const std::tuple<size_t, size_t> padW,
-    const std::tuple<size_t, size_t> padH,
     const size_t strideWidth,
     const size_t strideHeight,
     const bool floor,
+    const std::tuple<size_t, size_t> padW,
+    const std::tuple<size_t, size_t> padH,
     const std::string paddingType) :
     kernelWidth(kernelWidth),
     kernelHeight(kernelHeight),

@@ -72,11 +72,11 @@ class MaxPooling
 
   MaxPooling(const size_t kernelWidth,
              const size_t kernelHeight,
-             const size_t padW = 0,
-             const size_t padH = 0,
              const size_t strideWidth = 1,
              const size_t strideHeight = 1,
              const bool floor = true,
+             const size_t padW = 0,
+             const size_t padH = 0,
              const std::string paddingType = "None");
   /**
    * Create the MaxPooling object using the specified number of units and padding.
@@ -96,11 +96,11 @@ class MaxPooling
    */
   MaxPooling(const size_t kernelWidth,
              const size_t kernelHeight,
-             const std::tuple<size_t, size_t> padW,
-             const std::tuple<size_t, size_t> padH,
              const size_t strideWidth = 1,
              const size_t strideHeight = 1,
              const bool floor = true,
+             const std::tuple<size_t, size_t> padW = std::make_tuple(0, 0),
+             const std::tuple<size_t, size_t> padH = std::make_tuple(0, 0),
              const std::string paddingType = "None");
 
   /**
